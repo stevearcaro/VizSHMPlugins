@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+    <PLUGINSDK_INC>C:\Program Files\Vizrt\Viz3\plugin\src\Include\</PLUGINSDK_INC>
+    <PLUGINSDK_LIB>C:\Program Files\Vizrt\Viz3\plugin\src\Lib\</PLUGINSDK_LIB>
+    <VIZARTISTROOT>C:\Program Files\Vizrt\Viz3\</VIZARTISTROOT>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <_PropertySheetDisplayName>Viz Plugins Win32 Release</_PropertySheetDisplayName>
+    <OutDir>$(PlatformName)\$(Configuration).VC140\</OutDir>
+    <IntDir>$(PlatformName)\$(Configuration).VC140_$(ProjectName)\</IntDir>
+    <TargetExt>.vip</TargetExt>
+    <TargetName>$(ProjectName)</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(PLUGINSDK_INC);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <PreprocessorDefinitions>_USE_MATH_DEFINES;VIZPLUGIN_EXPORTS;_USERDLL;_WINDOWS;NOMINMAX;NDEBUG;WIN32;_WIN32_WINNT=0x502;WINVER=0x502;_USE_32BIT_TIME_T;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;STRSAFE_NO_DEPRECATE;VIZ30;VIZ_30;_VIZ3;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level4</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <TreatSpecificWarningsAsErrors>4003;4010;4013;4020;4022;4024;4028;4029;4031;4032;4042;4047;4048;4056;4073;4074;4079;4083;4088;4089;4090;4091;4094;4098;4099;4100;4101;4103;4113;4114;4116;4124;4129;4130;4133;4142;4144;4146;4150;4154;4156;4159;4162;4183;4197;4202;4203;4204;4205;4207;4208;4210;4212;4214;4215;4216;4218;4220;4221;4223;4224;4228;4230;4231;4240;4255;4258;4287;4289;4307;4431;4715;4836;4837;4905;4906;4946;4928;6244;6246;%(TreatSpecificWarningsAsErrors)</TreatSpecificWarningsAsErrors>
+      <AdditionalOptions>/wd4505 /w34172 /w34201 /w34211 /w34239 %(AdditionalOptions)</AdditionalOptions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+    </ClCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Lib>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
+    </Lib>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <ImportLibrary>$(TargetDir)$(TargetName).lib</ImportLibrary>
+      <AdditionalDependencies>$(PLUGINSDK_LIB)evPluginLib.lib;$(PLUGINSDK_LIB)viz.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <LargeAddressAware>true</LargeAddressAware>
+    </Link>
+    <PostBuildEvent>
+      <Command>echo "--&gt; VIZARTISTROOT=$(VIZARTISTROOT)"
+
+SET DST="$(VIZARTISTROOT)Plugin\"
+IF NOT EXIST %DST% MKDIR %DST%
+echo copy /Y "$(TargetDir)$(TargetName).pdb" %DST%
+copy /Y "$(TargetDir)$(TargetName).pdb" %DST%
+echo copy /Y "$(TargetDir)$(TargetName).vip" %DST%
+copy /Y "$(TargetDir)$(TargetName).vip" %DST%
+
+SET TARGETNAME32=$(TargetName)
+IF EXIST %TARGETNAME32%.ppm (
+IF NOT EXIST $(VIZARTISTROOT)Plugin\Icon MKDIR $(VIZARTISTROOT)Plugin\Icon
+echo copy /Y "%TARGETNAME32%.ppm" "$(VIZARTISTROOT)Plugin\Icon\%TARGETNAME32%"
+copy /Y "%TARGETNAME32%.ppm" "$(VIZARTISTROOT)Plugin\Icon\%TARGETNAME32%"
+)
+
+IF EXIST %TARGETNAME32%.bfrag (
+echo copy /Y "%TARGETNAME32%.bfrag" "$(VIZARTISTROOT)Plugin\Data\shaders\RFx"
+copy /Y "%TARGETNAME32%.bfrag" "$(VIZARTISTROOT)Plugin\Data\shaders\RFx"
+)
+
+IF EXIST %TARGETNAME32%.dp (
+echo copy /Y "%TARGETNAME32%.dp" "$(VIZARTISTROOT)"
+copy /Y "%TARGETNAME32%.dp" "$(VIZARTISTROOT)"
+)
+</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="PLUGINSDK_INC">
+      <Value>$(PLUGINSDK_INC)</Value>
+    </BuildMacro>
+    <BuildMacro Include="PLUGINSDK_LIB">
+      <Value>$(PLUGINSDK_LIB)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VIZARTISTROOT">
+      <Value>$(VIZARTISTROOT)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>
