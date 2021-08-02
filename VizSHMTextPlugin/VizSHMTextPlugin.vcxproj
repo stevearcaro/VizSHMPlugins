@@ -19,17 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Dllmain.cpp" />
-    <ClCompile Include="VizSHMParameterPlugin.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="VizSHMTextPlugin.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="VizSHMParameterPlugin.h" />
+    <ClInclude Include="VizSHMTextPlugin.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{5a0fd643-1bab-4ab5-9332-1612535567a7}</ProjectGuid>
+    <ProjectGuid>{056e1044-b613-43e1-9f64-b157310383c2}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>VizSHMParameterPlugin</RootNamespace>
+    <RootNamespace>VizSHMTextPlugin</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

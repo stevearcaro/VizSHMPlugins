@@ -19,17 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Dllmain.cpp" />
-    <ClCompile Include="VizSHMParameterPlugin.cpp" />
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="VizForceSetImage.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="VizSHMParameterPlugin.h" />
+    <ClInclude Include="VizForceSetImage.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{5a0fd643-1bab-4ab5-9332-1612535567a7}</ProjectGuid>
+    <ProjectGuid>{cd46559b-528e-40bd-a574-e4522dd78a9c}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>VizSHMParameterPlugin</RootNamespace>
+    <RootNamespace>VizForceSetImage</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
