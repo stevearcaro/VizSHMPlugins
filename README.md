@@ -1,7 +1,4 @@
-# VizSHMPlugins
-A set of VizRT Shared Memory Plugins that emulate how Datapool works
 
-====================================
 PROJECT DESCRIPTION
 ====================================
 
